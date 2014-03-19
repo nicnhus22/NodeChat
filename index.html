@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ChatRoom | NodeJSr</title>
+  <meta name="description" content="Home Page of Grupo">
+  <meta name="author" content="NicnHus">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<!-- FIRST CONTAINER TO LOGIN -->
+	<div class="global_container" id="global_container_1">
+
+		<div id="login_block">
+			<div id="login_title">ChatRoom</div>
+			<form action ="" id="loginform">
+			<p><div class="input_field"><input type="text" name="login" id="username" placeholder="Username" required ><i id="user_check" class="fa fa-ban"></i></div></p>
+			<p><div class="input_field"><input type="text" name="mail" id="mail" placeholder="Email" required><i style="color:#fff" class="fa fa-ban"></i></div></p>
+			<p class="submit"><input type="submit" value="Login" id="submit_login"></p>
+			</form>
+		</div>
+
+	</div>
+	<!-- END OF FIRST CONTAINER -->
+
+	<!-- SECOND CONTAINER TO CHAT -->
+	<div class="global_container" id="global_container_2" style="background-color:#DCDDD8">
+
+		<!-- RIGHT SIDE NAVIGATION -->
+		<div id="right_side">
+			<div id="feed_box">
+				<ul>
+				</ul>
+			</div>
+
+			<div id="right_bar">
+				<hr class="left"/><div id="online_users">ONLINE(<span id="num_online"></span>)</div><hr class="right"/>
+				<div id="users">
+					<ul>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- END OF RIGHT SIDE NAVIGATION -->
+		
+		<!-- MAIN CHAT BLOCK -->
+		<div id="chat_block">
+
+			<div id="messages">
+				<div id="msgtpl">
+					<div class="user_info">
+						<div class="user_name">{{user.username}}</div>
+					</div>
+					<hr/>
+					<div class="user_msg">
+						<img src="{{{user.avatar}}}" width="35" height="35"> 
+						<p class="triangle-border left">{{message}}</p>
+						<span style="font-size:15px; font-style:italic">Sent at {{h}}:{{m}}</span>
+					</div>
+					<hr/>
+				</div>
+			</div>
+
+			<div id="send_block">
+				<form action ="" id="sendMessage">
+					<input type="text" name="message" id="message" placeholder="Enter a message">
+					<i class="fa fa-pencil-square-o input_choice"></i>
+					<div id="is_writing"></div>
+				</form>
+			</div>
+			
+		</div>
+		<!-- END OF MAIN CHAT BLOCK -->
+      
+   	</div>
+   	<!-- END OF SECOND CONTAINER -->
+
+  
+	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+	<script src="http://localhost:1337/socket.io/socket.io.js"></script>
+	<script src="js/mustache.js"></script>
+	<script src="js/client.js"></script>
+</body>
+</html>

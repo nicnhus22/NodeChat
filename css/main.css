@@ -1,0 +1,301 @@
+
+@font-face {
+  font-family: 'Gothic';
+  src: url("gothic.ttf");
+}
+
+
+html, body { 
+  height: 100%;width:100%;
+  margin:0;padding:0;
+  font-family: 'Gothic', sans-serif;
+  overflow: hidden;
+}
+
+.global_container {
+  position:relative;
+  padding:0 0 0 0 ;
+  height:100%;width:100%;
+  background: rgba(19,54,64,0.9);
+}
+
+#login_block {
+  position: relative;
+  width: 450px;height:205px;
+  text-align: center;
+  margin: auto auto;
+  top: 38%;
+  border: 10px rgba(19,54,64,0.9) solid;
+  /*box-shadow: 0 0 20px #133640;*/
+}
+
+#login_title {
+  position: absolute;
+  width: 100%;
+  height:40px;
+  top:-50px;
+  font-size:35px;
+  text-align: center; 
+  z-index: 10;
+}
+
+#login_block input[type='text'] {
+  width: 80%;
+  height: 30px;
+  font-size: 20px;
+  padding: 10px;
+  font-family: inherit;
+  border-radius: 5px;
+  margin-left: 15px;
+}
+
+#login_block input[type='submit'] {
+  width: 85%;
+  height: 30px;
+  font-size: 20px;
+  font-family: inherit;
+  border-radius: 5px;
+}
+
+#chat_block {
+  width: calc(100% - 310px);
+  height: 100%;
+}
+
+#chat_block form {
+  padding: 50px;
+  margin: 0;
+  width: calc(100% - 310px);
+  height: 100%;
+}
+
+#send_block {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height:150px;
+  display: none;
+}
+
+#send_block input {
+  font-size: 25px;
+  font-family: inherit;
+  width: calc(100% - 110px);
+  height:calc(100% - 110px);
+  padding: 5px;
+}
+
+.user_info {
+  overflow: auto;
+
+}
+
+.user_msg img {
+  float: left;
+  margin-top: 12px;
+}
+
+.user_name {
+  position: relative;
+  margin-top: 5px;
+}
+
+.user_msg {
+
+}
+
+#messages {
+  padding: 50px;
+  overflow-y:scroll; 
+  height:80%;
+}
+
+#right_bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  height: calc(70% - 12px);
+  border: 1px solid #000;
+  padding: 5px;
+}
+
+#feed_box {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 300px;
+  height: calc(30% - 14px);
+  border: 1px solid #000;
+  padding: 5px;
+  overflow-y: scroll;
+}
+
+#right_side ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#right_side ul li {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  margin-bottom: 10px;
+}
+
+.connect {
+  color:#7BBC28;
+}
+
+.disconnect{
+  color: #E0293F;
+}
+
+#right_side {
+  display: none;
+}
+
+.chat_username {
+  position: absolute;
+  float: right;
+  margin-top: 5px;
+  left: 50px;
+}
+
+
+.chat_avatar {
+  float: left;
+}
+
+#online_users {
+  width: 100%;
+  text-align: center;
+}
+
+hr.left {
+  width: 80px;
+  position: absolute;
+  left: 20px;
+  margin-top: 10px;
+  float: left;
+}
+
+hr.right {
+  width: 80px;
+  position: absolute;
+  right: 20px;
+  margin-top: -11px;
+  float: right;
+}
+
+.input_field i {
+  position: relative;
+  left: -30px;
+  font-size: 20px;
+  color:#fff;
+}
+
+#is_writing {
+  font-size: 15px;
+  font-style: italic;
+}
+
+.input_choice {
+  position: absolute;
+  float:right;
+  margin-left: -40px;
+  font-size: 30px;
+  margin-top: 15px;
+  color:rgba(19,54,64,1);
+}
+
+
+
+/*background-image: -webkit-linear-gradient(bottom, #f2f2f2, #fff);*/
+/* ============================================================================================================================
+== BUBBLE WITH A BORDER AND TRIANGLE
+** ============================================================================================================================ */
+
+/* THE SPEECH BUBBLE
+------------------------------------------------------------------------------------------------------------------------------- */
+
+.triangle-border {
+  position:relative;
+  padding:15px;
+  border:5px solid rgba(19,54,64,0.9);
+  color:#333;
+  background:#fff;
+  /* css3 */
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+  background-image: -webkit-linear-gradient(bottom, #f2f2f2, #fff);
+  overflow-wrap: break-word;
+}
+
+/* Variant : for left positioned triangle
+------------------------------------------ */
+
+.triangle-border.left {
+  margin-left:50px;
+}
+
+/* Variant : for right positioned triangle
+------------------------------------------ */
+
+.triangle-border.right {
+  margin-right:50px;
+}
+
+/* THE TRIANGLE
+------------------------------------------------------------------------------------------------------------------------------- */
+
+.triangle-border:before {
+  content:"";
+  position:absolute;
+  bottom:-20px; /* value = - border-top-width - border-bottom-width */
+  left:40px; /* controls horizontal position */
+  border-width:20px 20px 0;
+  border-style:solid;
+  border-color:rgba(19,54,64,0.9) transparent;
+  /* reduce the damage in FF3.0 */
+  display:block;
+  width:0;
+}
+
+/* creates the smaller  triangle */
+.triangle-border:after {
+  content:"";
+  position:absolute;
+  bottom:-13px; /* value = - border-top-width - border-bottom-width */
+  left:47px; /* value = (:before left) + (:before border-left) - (:after border-left) */
+  border-width:13px 13px 0;
+  border-style:solid;
+  border-color:#fff transparent;
+  /* reduce the damage in FF3.0 */
+  display:block;
+  width:0;
+}
+
+
+/* Variant : left
+------------------------------------------ */
+
+/* creates the larger triangle */
+.triangle-border.left:before {
+  top: 10px;
+  bottom: auto;
+  left: -16px;
+  border-width: 15px 15px 15px 0;
+  border-color: transparent rgba(19,54,64,0.9);
+}
+
+/* creates the smaller  triangle */
+.triangle-border.left:after {
+  top: 16px;
+  bottom: auto;
+  left: -10px;
+  border-width: 9px 10px 9px 0;
+  border-color: transparent #fff;
+}
