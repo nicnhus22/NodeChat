@@ -1,15 +1,8 @@
 (function($){
 
-	$.each(['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#000', '#fff'], function() {
-	      $('#colors_demo .tools').append("<a href='#colors_sketch' data-color='" + this + "' style='width: 10px; background: " + this + ";'></a> ");
-	    });
-	    $.each([3, 5, 10, 15], function() {
-	      $('#colors_demo .tools').append("<a href='#colors_sketch' data-size='" + this + "' style='background: #ccc'>" + this + "</a> ");
-	    });
-	    $('#colors_sketch').sketch();
-
-
-	
+	// Enable the sketching
+	var canvas = $('#colors_sketch');
+	canvas.sketch();
 
 	// Create connection to the socket
 	var socket    = io.connect('http://localhost:1337');
@@ -214,7 +207,6 @@
 		
 		if(!canvas_shown){
 			$('#canvas_container').fadeIn();
-			enableDraw();
 			canvas_shown = true;
 		}else{
 			$('#canvas_container').fadeOut(); 
@@ -222,14 +214,6 @@
 		}
 		
 	});	
-
-
-	function enableDraw(){
-
-
-
-
-	}
 
 
 })(jQuery);
