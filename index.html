@@ -65,12 +65,20 @@
 					</div>
 					<hr/>
 				</div>
+
+				<div id="canvas_container">
+					<div class="tools">
+					  <a href="#colors_sketch" data-download="png" style="float: right; width: 100px;">Download</a>
+					</div>
+					<canvas id="colors_sketch" width="600" height="350"></canvas>
+
+				</div>
 			</div>
 
 			<div id="send_block">
 				<form action ="" id="sendMessage">
 					<input type="text" name="message" id="message" placeholder="Enter a message">
-					<i class="fa fa-pencil-square-o input_choice"></i>
+					<i id="draw_icon" class="fa fa-pencil-square-o input_choice"></i>
 					<div id="is_writing"></div>
 				</form>
 			</div>
@@ -83,8 +91,9 @@
 
   
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+	<script src="http://intridea.github.io/sketch.js/lib/sketch.js"></script>
 	<script src="http://localhost:1337/socket.io/socket.io.js"></script>
-	<script src="js/mustache.js"></script>
+	<script src="js/mustache.js"></script>1
 	<script src="js/client.js"></script>
 </body>
 </html>
