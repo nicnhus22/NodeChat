@@ -67,6 +67,7 @@ io.sockets.on('connection', function(socket){
 
 	 });
 
+
 	 socket.on('doneTyping', function(){
 	 	socket.broadcast.emit('doneTyping');
 	 });
@@ -75,7 +76,14 @@ io.sockets.on('connection', function(socket){
 	 *	Manage the user typing event
 	 */
 	 socket.on('userTyping', function(user){
-	 	 socket.broadcast.emit('userTyping', user.user.username);
+	 	try {
+	 		console.log(user);
+	 		socket.broadcast.emit('userTyping', user.user.username);
+	 	}catch(err){
+	 		console.log(user);
+	 		socket.broadcast.emit('userTyping', user.username);
+	 	}
+	 		
 	 });
 
 
@@ -111,6 +119,27 @@ io.sockets.on('connection', function(socket){
 		self.online_friends = Object.size(online_users);
 		io.sockets.emit('delUser', self);
 	});
+
+	/*
+	 *	Drawing received, emit to everyone
+	
+	 socket.on('newDrawing', function(msg){
+	 	msg.user  = self;
+	 	date      = new Date();
+	 	msg.h     = date.getHours();
+	 	msg.m     = date.getMinutes();
+	 	
+	 	if(msg.m.toString().length == 1)
+	 		msg.m = "0"+msg.m;
+	 	
+	 	// Handle history
+	 	message_hist.push(msg);
+	 	if(message_hist > history)
+	 		message_hist.shift();
+
+	 	io.sockets.emit('newDrawing', msg);
+
+	 }); */
 
 });
 

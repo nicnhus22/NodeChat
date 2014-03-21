@@ -1,14 +1,19 @@
+
+var drawingEvent;
+
 (function($){
 
 	// Enable the sketching
-	var canvas = $('#colors_sketch');
-	canvas.sketch();
+	var canvas;
 
 	// Create connection to the socket
 	var socket    = io.connect('http://localhost:1337');
 	// Handle on the template to inject using Mustache.js
 	var msgtpl    = $('#msgtpl').html();
 					$('#msgtpl').remove();
+
+	var msgtpl_drawing =  $('#msgtpl_drawing').html();
+						  $('#msgtpl_drawing').remove();
 	// Array to keep track of all the usernames (autocheck)
 	var usernames = [];
 
@@ -70,7 +75,8 @@
 	 	if(($('#message').val().match(/\S/))){
 
 	 		socket.emit('newMsg', {
-	 			message : $('#message').val()
+	 			message : $('#message').val(),
+	 			type    : 'text'
 		 	});
 
 		 	$('#message').val('');
@@ -104,18 +110,31 @@
 	 *	Manage the message receiving
 	 */
 	 socket.on('newMsg', function(msg){
+
 	 	// Fill the template to display the message and its attributes
-	 	$('#messages').append(Mustache.render(msgtpl, msg)+'<br/>');
+	 	if(msg.type == "text"){
+	 		// Append text message in template
+	 		$('#messages').append(Mustache.render(msgtpl, msg)+'<br/>');
+	 		// Update the action in the feed box
+			$('#feed_box ul').append('<li><i class="fa fa-comments-o"></i></i> &nbsp;'+msg.user.username+" posted a message</li>");
+	 	}
+	 		
+	 	if(msg.type == "drawing"){
+	 		// Append drawing in template
+	 		$('#messages').append(Mustache.render(msgtpl_drawing, msg)+'<br/>');
+	 		// Update the action in the feed box
+			$('#feed_box ul').append('<li><i class="fa fa-pencil-square-o"></i></i> &nbsp;'+msg.user.username+" posted a drawing</li>");
+	 	}
+
+	 	// Scroll to bottom of the feed box
+		$('#feed_box').scrollTop($('#feed_box').prop("scrollHeight"));
+
 	 	// Scroll to the bottom of the page to display newly sent message
 	 	$('#messages').animate({
 		    scrollTop: $("#messages")[0].scrollHeight,
 		  }, 500, function() {
 		});
-
-	 	// Update the action in the feed box
-		$('#feed_box ul').append('<li><i class="fa fa-comments-o"></i></i> &nbsp;'+msg.user.username+" posted a message</li>");
-		// Scroll to bottom of the feed box
-		$('#feed_box').scrollTop($('#feed_box').prop("scrollHeight"));
+		
 	 });
 
 	/*
@@ -145,6 +164,27 @@
 		// Update number of online users
 		$('#num_online').html(user.online_friends);
 	});
+
+	/*
+	 *	Manage the drawing receiving
+	
+ 	socket.on('newDrawing', function(msg){
+	 	console.log('Called');
+		// Fill the template to display the message using the drawing template and its attributes
+	 	$('#messages').append(Mustache.render(msgtpl_drawing, msg)+'<br/>');
+
+	 	// Scroll to the bottom of the page to display newly sent message
+	 	$('#messages').animate({
+		    scrollTop: $("#messages")[0].scrollHeight,
+		  }, 500, function() {
+		});
+
+	 	// Update the action in the feed box
+		$('#feed_box ul').append('<li><i class="fa fa-pencil-square-o"></i></i> &nbsp;'+msg.user.username+" posted a drawing</li>");
+		// Scroll to bottom of the feed box
+		$('#feed_box').scrollTop($('#feed_box').prop("scrollHeight"));
+ 	}); */
+	 
 
 
 
@@ -206,15 +246,51 @@
 	$('#draw_icon').click(function(){
 		
 		if(!canvas_shown){
+			canvas = $('#colors_sketch');
+			canvas.sketch();
 			$('#canvas_container').fadeIn();
 			canvas_shown = true;
 		}else{
+			$('#canvas_container').fadeOut(); 
+			canvas_shown = false;
+			getCanvasURL();
+		}
+		
+	});	
+
+	/*
+	 *	Manage the drawing icon click
+	 */
+	$('#messages').click(function(){
+		
+		if(canvas_shown){
 			$('#canvas_container').fadeOut(); 
 			canvas_shown = false;
 		}
 		
 	});	
 
+	/*
+	 *	Send drawing to the server
+	 */
+	drawingEvent = function(URL){
+
+		
+	}
+
+	$('#displayDraw').click(function(){
+
+		var msg = '<iframe id="draw_Frame" width="600" height="350" src="'+getCanvasURL()+'" style="background-color:#fff"></iframe>';
+
+		socket.emit('newMsg', {
+ 			message :  msg,
+ 			type    : 'drawing'
+		 });
+
+	});
+
+
 
 })(jQuery);
+
 

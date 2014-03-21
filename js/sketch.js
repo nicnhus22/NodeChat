@@ -75,10 +75,19 @@ var __slice = Array.prototype.slice;
 
       var URL = this.el.toDataURL(mime);
 
-      $('#draw_Frame').prop('src',URL);
+      // $('#draw_Frame').prop('src',URL);
 
-      // return window.open(URL);
+      // Launch the event in client side
+      // $.getScript("js/client.js", function(){
+      //    drawingEvent(URL);
+      // });
+
+      setCanvasURL(URL);
+
+      $('#displayDraw').click();
+
     };
+
     Sketch.prototype.set = function(key, value) {
       this[key] = value;
       return this.canvas.trigger("sketch.change" + key, value);
