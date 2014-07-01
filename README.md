@@ -1,6 +1,16 @@
 NodeChat
 ========
 
+Here is a chat I made using Node.js.
+- The UI was made entirely from scratch
+- I used the following node modules:
+  > [Socket.IO](http://socket.io/)
+  > [MD5](https://www.npmjs.org/package/MD5)
+- I used the following javascript libraries
+  > [Mustache](http://mustache.github.io/)
+  > [Sketch.js](http://intridea.github.io/sketch.js/)
+  > [Jquery](http://jquery.com/) (Obviously...)
+
 Here are some screenshots for you lazy people:
 
 <b>Login page (imagine two users)</b>
