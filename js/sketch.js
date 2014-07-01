@@ -75,13 +75,6 @@ var __slice = Array.prototype.slice;
 
       var URL = this.el.toDataURL(mime);
 
-      // $('#draw_Frame').prop('src',URL);
-
-      // Launch the event in client side
-      // $.getScript("js/client.js", function(){
-      //    drawingEvent(URL);
-      // });
-
       setCanvasURL(URL);
 
       $('#displayDraw').click();

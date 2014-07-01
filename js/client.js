@@ -280,7 +280,7 @@ var drawingEvent;
 
 	$('#displayDraw').click(function(){
 
-		var msg = '<iframe id="draw_Frame" width="600" height="350" src="'+getCanvasURL()+'" style="background-color:#fff"></iframe>';
+		var msg = '<iframe id="draw_frame" width="600" height="350" src="'+getCanvasURL()+'" style="background-color:#fff"></iframe>';
 
 		socket.emit('newMsg', {
  			message :  msg,

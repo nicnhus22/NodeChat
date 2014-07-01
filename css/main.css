@@ -101,7 +101,7 @@ html, body {
 }
 
 .user_msg {
-
+  position: relative;
 }
 
 #messages {
@@ -225,6 +225,15 @@ hr.right {
 
 #sendDrawing {
   position: absolute;
+}
+
+.drawing_menu {
+  position: absolute;
+  left: 80px;
+  font-size: 25px;
+  z-index: 50;
+  margin-top: 20px;
+  color:rgba(19,54,64,0.9);
 }
 
 
