@@ -19,7 +19,7 @@ Here is a chat I made using Node.js.
  </li>
 </ul>
 
-<b>Run the app</b>
+<h4>Run the app</h4>
 Clone the repo. Put the NodeChat folder in you www folder to run it has localhost.
 To start the node server, cd at the root of the folder where server.js is located and type the following command in your terminal:
 ```node server.js```
@@ -29,7 +29,7 @@ If the server had started successfuly it should say
 ```info - socket.io started```
 Then go to 127.0.0.1/NodeChat and that is it.
 
-Here are some screenshots for you lazy people:
+<h4>Screenshots</h4>
 
 <b>Login page (imagine two users)</b>
 <hr/>
