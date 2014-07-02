@@ -19,6 +19,10 @@ Here is a chat I made using Node.js.
  </li>
 </ul>
 
+To start the node server, cd at the root of the folder where server.js is located and type the following command in your terminal:
+'''node server.js'''
+If you don't have node installed go [here](http://nodejs.org/download/) 
+
 Here are some screenshots for you lazy people:
 
 <b>Login page (imagine two users)</b>
